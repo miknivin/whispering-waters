@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from "react";
 import { GripIcon, MinusIcon, PlayIcon, XIcon } from "./icons";
 
 const STORAGE_KEY = "ww-video-widget-closed";
-const WIDTH = 248;
 const HEIGHT_HEADER = 30;
 const MARGIN = 12;
 
@@ -31,11 +30,8 @@ export default function FloatingVideoPlayer() {
       // any other way than a mount-time effect.
       // eslint-disable-next-line react-hooks/set-state-in-effect
       if (sessionStorage.getItem(STORAGE_KEY) === "1") setClosed(true);
-      // The expanded card is wide enough to cover hero text on small
-      // screens, so start collapsed there and let people opt in.
-      if (window.matchMedia("(max-width: 639px)").matches) setMinimized(true);
     } catch {
-      // sessionStorage/matchMedia unavailable — ignore, widget just stays visible
+      // sessionStorage unavailable — ignore, widget just stays visible
     }
   }, []);
 
@@ -114,20 +110,13 @@ export default function FloatingVideoPlayer() {
   return (
     <div
       ref={widgetRef}
-      style={
-        positioned
-          ? { left: pos.left, top: pos.top, right: "auto", bottom: "auto" }
-          : { width: minimized ? undefined : WIDTH }
-      }
-      className={`fixed z-40 select-none ${
-        positioned ? "" : "right-4 top-20 md:right-7 md:top-24"
-      }`}
+      style={positioned ? { left: pos.left, top: pos.top, right: "auto", bottom: "auto" } : undefined}
+      className={`fixed z-40 select-none ${positioned ? "" : "bottom-5 left-4 md:bottom-7 md:left-7"}`}
     >
       <div
         className={`card-surface overflow-hidden border border-brand-200/60 transition-[width,height] duration-200 ${
-          minimized ? "h-14 w-14 rounded-full" : "rounded-2xl"
+          minimized ? "h-14 w-14 rounded-full" : "w-28 rounded-2xl lg:w-36"
         }`}
-        style={!minimized ? { width: WIDTH } : undefined}
       >
         {minimized ? (
           <button
@@ -150,7 +139,7 @@ export default function FloatingVideoPlayer() {
             >
               <span className="flex items-center gap-1.5 text-[10.5px] font-medium tracking-wide">
                 <GripIcon className="h-3.5 w-3.5 opacity-80" />
-                Spa moments
+                <span className="hidden lg:inline">Spa</span>
               </span>
               <div className="flex items-center gap-0.5">
                 <button
@@ -180,7 +169,7 @@ export default function FloatingVideoPlayer() {
               loop
               playsInline
               disablePictureInPicture
-              className="block max-h-[320px] w-full bg-brand-900 object-cover"
+              className="block aspect-9/16 w-full bg-brand-900 object-cover"
             />
           </>
         )}

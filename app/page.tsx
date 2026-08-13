@@ -49,7 +49,7 @@ export default function Home() {
   return (
     <>
       {/* HERO */}
-      <section className="relative flex min-h-[92vh] items-end overflow-hidden bg-brand-900 sm:min-h-[88vh]">
+      <section className="relative flex min-h-[92vh] flex-col justify-end overflow-hidden bg-brand-900 sm:min-h-[88vh]">
         <Image
           src="/imgs/couple-suite-02.jpg"
           alt="A candlelit couple's suite at Whispering Waters Spa with jacuzzi and rose petals"
