@@ -1,26 +1,298 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Base surfaces */
+  --color-cream: #fbf6ef;
+  --color-cream-alt: #f4ead9;
+  --color-surface: #ffffff;
+
+  /* Brand (from logo linework) */
+  --color-brand-50: #f6ede6;
+  --color-brand-200: #dcb99d;
+  --color-brand-400: #a97a51;
+  --color-brand-600: #8a5a3c;
+  --color-brand-700: #6e4530;
+  --color-brand-900: #402719;
+
+  /* Pastels drawn from the spa's own interiors */
+  --color-blush: #f2ddd3;
+  --color-blush-deep: #e3b6a6;
+  --color-sage: #d9e2cd;
+  --color-sage-deep: #a9bb95;
+  --color-gold: #c9a467;
+  --color-gold-soft: #e6d3ab;
+
+  /* Ink */
+  --color-ink: #3a2b22;
+  --color-ink-soft: #6b5849;
+
+  --shadow-soft: 0 20px 45px -20px rgba(64, 39, 25, 0.28);
+  --shadow-lift: 0 10px 30px -12px rgba(64, 39, 25, 0.35);
+
+  --ease-silk: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-cream: var(--color-cream);
+  --color-cream-alt: var(--color-cream-alt);
+  --color-surface: var(--color-surface);
+
+  --color-brand-50: var(--color-brand-50);
+  --color-brand-200: var(--color-brand-200);
+  --color-brand-400: var(--color-brand-400);
+  --color-brand-600: var(--color-brand-600);
+  --color-brand-700: var(--color-brand-700);
+  --color-brand-900: var(--color-brand-900);
+
+  --color-blush: var(--color-blush);
+  --color-blush-deep: var(--color-blush-deep);
+  --color-sage: var(--color-sage);
+  --color-sage-deep: var(--color-sage-deep);
+  --color-gold: var(--color-gold);
+  --color-gold-soft: var(--color-gold-soft);
+
+  --color-ink: var(--color-ink);
+  --color-ink-soft: var(--color-ink-soft);
+
+  --shadow-soft: var(--shadow-soft);
+  --shadow-lift: var(--shadow-lift);
+
+  --font-display: var(--font-cormorant);
+  --font-script: var(--font-script);
+  --font-body: var(--font-jost);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/*
+  Everything below lives inside Tailwind's own `base` / `components` layers
+  (declared by `@import "tailwindcss"` above) rather than as unlayered CSS.
+  Unlayered rules always win over @layer rules regardless of specificity, so
+  without this, plain selectors like `h1 { color: ... }` would permanently
+  beat any `text-*` utility applied in JSX. Layering keeps the normal
+  Tailwind override order intact: base < components < utilities.
+*/
+
+@layer base {
+  * {
+    border-color: var(--color-brand-200);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--color-cream);
+    color: var(--color-ink);
+    font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display), serif;
+    color: var(--color-brand-900);
+    letter-spacing: 0.01em;
+  }
+
+  ::selection {
+    background: var(--color-blush-deep);
+    color: var(--color-brand-900);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  /* ---------- Layout helpers ---------- */
+
+  .container-spa {
+    width: 100%;
+    max-width: 78rem;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+
+  @media (min-width: 768px) {
+    .container-spa {
+      padding-inline: 2.5rem;
+    }
+  }
+
+  .section-pad {
+    padding-block: clamp(3.5rem, 6vw, 6.5rem);
+  }
+
+  /* ---------- Typography accents ---------- */
+
+  .script-text {
+    font-family: var(--font-script), cursive;
+    font-weight: 400;
+    color: var(--color-brand-600);
+    line-height: 1;
+  }
+
+  .eyebrow {
+    font-family: var(--font-body), sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.28em;
+    font-size: 0.72rem;
+    color: var(--color-brand-600);
+    font-weight: 500;
+  }
+
+  .text-shadow-hero {
+    text-shadow: 0 2px 20px rgba(20, 10, 5, 0.55), 0 1px 3px rgba(20, 10, 5, 0.5);
+  }
+
+  /* ---------- Ornament divider (echoes the pricelist leaf motif) ---------- */
+
+  .ornament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.85rem;
+    color: var(--color-gold);
+  }
+
+  .ornament::before,
+  .ornament::after {
+    content: "";
+    height: 1px;
+    width: clamp(2rem, 6vw, 4.5rem);
+    background: linear-gradient(90deg, transparent, currentColor);
+  }
+
+  .ornament::after {
+    background: linear-gradient(90deg, currentColor, transparent);
+  }
+
+  /* ---------- Buttons ---------- */
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    border-radius: 999px;
+    padding: 0.85rem 1.9rem;
+    font-family: var(--font-body), sans-serif;
+    font-size: 0.92rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: transform 0.35s var(--ease-silk), box-shadow 0.35s var(--ease-silk), background-color 0.35s var(--ease-silk), color 0.35s var(--ease-silk);
+    white-space: nowrap;
+  }
+
+  .btn:active {
+    transform: scale(0.97);
+  }
+
+  .btn-primary {
+    background: var(--color-brand-600);
+    color: var(--color-cream);
+    box-shadow: var(--shadow-lift);
+  }
+
+  .btn-primary:hover {
+    background: var(--color-brand-700);
+    transform: translateY(-2px);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--color-brand-700);
+    border: 1.5px solid var(--color-brand-400);
+  }
+
+  .btn-outline:hover {
+    background: var(--color-brand-50);
+    border-color: var(--color-brand-600);
+    transform: translateY(-2px);
+  }
+
+  .btn-ghost-light {
+    background: rgba(255, 255, 255, 0.14);
+    color: #fff;
+    border: 1.5px solid rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(6px);
+  }
+
+  .btn-ghost-light:hover {
+    background: rgba(255, 255, 255, 0.24);
+    transform: translateY(-2px);
+  }
+
+  /* ---------- Cards ---------- */
+
+  .card-surface {
+    background: var(--color-surface);
+    border-radius: 1.5rem;
+    box-shadow: var(--shadow-soft);
+  }
+
+  /* ---------- Scroll reveal ---------- */
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.9s var(--ease-silk), transform 0.9s var(--ease-silk);
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-delay-1 { transition-delay: 0.08s; }
+  .reveal-delay-2 { transition-delay: 0.16s; }
+  .reveal-delay-3 { transition-delay: 0.24s; }
+  .reveal-delay-4 { transition-delay: 0.32s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+
+  /* ---------- Marquee (services ticker) ---------- */
+
+  .marquee-track {
+    animation: marquee-scroll 32s linear infinite;
+  }
+
+  .marquee-row:hover .marquee-track {
+    animation-play-state: paused;
+  }
+
+  /* ---------- Floating video player ---------- */
+
+  .pulse-ring {
+    animation: pulse-ring 2.6s var(--ease-silk) infinite;
+  }
+
+  /* ---------- Misc ---------- */
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .bg-noise-fade {
+    background: radial-gradient(120% 120% at 50% 0%, rgba(255, 255, 255, 0.6), transparent 60%);
+  }
+}
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 rgba(138, 90, 60, 0.45); }
+  70% { box-shadow: 0 0 0 14px rgba(138, 90, 60, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(138, 90, 60, 0); }
 }
