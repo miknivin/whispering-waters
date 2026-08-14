@@ -30,8 +30,11 @@ export default function FloatingVideoPlayer() {
       // any other way than a mount-time effect.
       // eslint-disable-next-line react-hooks/set-state-in-effect
       if (sessionStorage.getItem(STORAGE_KEY) === "1") setClosed(true);
+      // On mobile, wait for a tap before loading and autoplaying the video
+      // rather than starting it automatically.
+      if (window.matchMedia("(max-width: 1023px)").matches) setMinimized(true);
     } catch {
-      // sessionStorage unavailable — ignore, widget just stays visible
+      // sessionStorage/matchMedia unavailable — ignore, widget just stays visible
     }
   }, []);
 

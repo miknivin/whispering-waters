@@ -44,15 +44,16 @@ export default function Header() {
       }`}
     >
       <div className="container-spa flex items-center justify-between py-3">
-        <Link href="/" className="flex shrink-0 items-center">
+        <Link href="/" className="flex shrink-0 flex-col items-center leading-none">
           <Image
             src="/logo.png"
             alt="Whispering Waters Spa"
             width={200}
             height={160}
-            className="h-14 w-auto object-contain sm:h-16"
+            className="h-11 w-auto object-contain sm:h-12"
             priority
           />
+          <span className="eyebrow -mt-1 text-[10px]">Spa</span>
         </Link>
 
         <nav className="hidden items-center gap-9 md:flex">
