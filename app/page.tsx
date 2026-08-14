@@ -38,9 +38,18 @@ const FEATURES = [
 ];
 
 const GALLERY = [
-  { src: "/imgs/relaxation-room.jpg", alt: "Relaxation treatment room styled with rose petals" },
-  { src: "/imgs/amenities-tray.jpg", alt: "Traditional Arabic oil warmers and gold teapots" },
-  { src: "/imgs/couple-suite-01.jpg", alt: "Couple's suite with private jacuzzi" },
+  {
+    src: "/imgs/relaxation-room.jpg",
+    alt: "Relaxation treatment room styled with rose petals",
+  },
+  {
+    src: "/imgs/amenities-tray.jpg",
+    alt: "Traditional Arabic oil warmers and gold teapots",
+  },
+  {
+    src: "/imgs/couple-suite-01.jpg",
+    alt: "Couple's suite with private jacuzzi",
+  },
   { src: "/imgs/herbal-oils.jpg", alt: "Herbal infused massage oils" },
   { src: "/imgs/reception-02.jpg", alt: "Whispering Waters Spa reception" },
 ];
@@ -64,7 +73,7 @@ export default function Home() {
         <div className="container-spa relative w-full pb-16 pt-40 sm:pb-20">
           <Reveal>
             <span className="script-text text-shadow-hero text-4xl text-blush sm:text-5xl">
-              Whispering Waters
+              Whispering Waters Spa
             </span>
           </Reveal>
           <Reveal delay={1}>
@@ -74,14 +83,17 @@ export default function Home() {
           </Reveal>
           <Reveal delay={2}>
             <p className="text-shadow-hero mt-5 max-w-xl text-balance text-[1.05rem] leading-relaxed text-cream/90">
-              A boutique wellness retreat in the heart of Abu Dhabi, offering Ayurvedic, Arabic
-              and Moroccan rituals performed with warm hands and warmer intention.
+              A boutique wellness retreat in the heart of Abu Dhabi, offering
+              Ayurvedic, Arabic and Moroccan rituals performed with warm hands
+              and warmer intention.
             </p>
           </Reveal>
           <Reveal delay={3}>
             <div className="mt-9 flex flex-wrap items-center gap-4">
               <a
-                href={buildWhatsAppLink(`Hi ${BUSINESS.name}, I'd like to book an appointment.`)}
+                href={buildWhatsAppLink(
+                  `Hi ${BUSINESS.name}, I'd like to book an appointment.`,
+                )}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-primary"
@@ -133,7 +145,9 @@ export default function Home() {
                     <Icon className="h-5 w-5" />
                   </div>
                   <h3 className="mt-5 text-xl">{title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-ink-soft">{text}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-ink-soft">
+                    {text}
+                  </p>
                 </div>
               </Reveal>
             ))}
@@ -174,7 +188,9 @@ export default function Home() {
                   </div>
                   <div className="p-5">
                     <h3 className="text-xl leading-snug">{item.title}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-ink-soft">{item.blurb}</p>
+                    <p className="mt-2 text-sm leading-relaxed text-ink-soft">
+                      {item.blurb}
+                    </p>
                     <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-brand-600">
                       Explore menu
                       <ArrowRightIcon className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
@@ -203,14 +219,19 @@ export default function Home() {
               A quiet retreat, built around real touch
             </h2>
             <p className="mt-5 leading-relaxed text-ink-soft">
-              Whispering Waters was opened with a simple idea: a spa should feel like a
-              pause, not a performance. Inside our mezzanine-floor rooms at The Uptown Hotel and
-              Apartment, therapists trained in Ayurvedic, Arabic and Chinese traditions work with
-              warmed oils, herbal kizhi pouches and heated stones to bring the body back to ease.
+              Whispering Waters was opened with a simple idea: a spa should feel
+              like a pause, not a performance. Inside our mezzanine-floor rooms
+              at The Uptown Hotel and Apartment, therapists trained in
+              Ayurvedic, Arabic and Chinese traditions work with warmed oils,
+              herbal kizhi pouches and heated stones to bring the body back to
+              ease.
             </p>
             <p className="mt-4 leading-relaxed text-ink-soft">
-              From our reception, framed by the words <em>&ldquo;Touch the body. Heal the mind.
-              Calm the spirit,&rdquo;</em> to the rose-petalled jacuzzi in our couple&rsquo;s suite, every
+              From our reception, framed by the words{" "}
+              <em>
+                &ldquo;Touch the body. Heal the mind. Calm the spirit,&rdquo;
+              </em>{" "}
+              to the rose-petalled jacuzzi in our couple&rsquo;s suite, every
               corner was designed to slow you down.
             </p>
             <Link href="/about" className="btn btn-outline mt-7">
@@ -254,7 +275,9 @@ export default function Home() {
             <p className="script-text mx-auto mt-6 max-w-3xl text-balance text-3xl leading-relaxed text-blush sm:text-4xl">
               &ldquo;Touch the body, heal the mind, calm the spirit.&rdquo;
             </p>
-            <p className="eyebrow mt-6 text-gold-soft">The Whispering Waters Promise</p>
+            <p className="eyebrow mt-6 text-gold-soft">
+              The Whispering Waters Promise
+            </p>
           </Reveal>
         </div>
       </section>
@@ -300,12 +323,14 @@ export default function Home() {
                 Ready to slow down?
               </h2>
               <p className="mx-auto mt-4 max-w-md text-balance leading-relaxed text-ink-soft">
-                Message us on WhatsApp to check availability. Most appointments confirm within
-                minutes.
+                Message us on WhatsApp to check availability. Most appointments
+                confirm within minutes.
               </p>
               <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
                 <a
-                  href={buildWhatsAppLink(`Hi ${BUSINESS.name}, I'd like to book an appointment.`)}
+                  href={buildWhatsAppLink(
+                    `Hi ${BUSINESS.name}, I'd like to book an appointment.`,
+                  )}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn btn-primary"

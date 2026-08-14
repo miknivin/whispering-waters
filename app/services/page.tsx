@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Reveal from "@/components/Reveal";
+import ServicesAccordion from "@/components/ServicesAccordion";
 import { BUSINESS, buildWhatsAppLink } from "@/lib/constants";
-import { SERVICE_CATEGORIES } from "@/lib/services-data";
-import { ClockIcon, WhatsAppIcon } from "@/components/icons";
+import { WhatsAppIcon } from "@/components/icons";
 
 export const metadata: Metadata = {
   title: "Services & Price List",
@@ -32,88 +32,19 @@ export default function ServicesPage() {
               Treatments &amp; Price List
             </h1>
             <p className="text-shadow-hero mt-4 max-w-lg text-balance leading-relaxed text-cream/90">
-              All prices in AED. Message us on WhatsApp with the treatment you&rsquo;d like and
-              we&rsquo;ll confirm the next available slot.
+              All prices in AED. Tap a category to see the full menu, or message us on WhatsApp
+              with the treatment you&rsquo;d like and we&rsquo;ll confirm the next available slot.
             </p>
           </Reveal>
         </div>
       </section>
 
       {/* CATEGORIES */}
-      {SERVICE_CATEGORIES.map((category, index) => {
-        const reversed = index % 2 === 1;
-        return (
-          <section
-            key={category.slug}
-            id={category.slug}
-            className={`section-pad scroll-mt-24 ${index % 2 === 1 ? "bg-cream-alt" : ""}`}
-          >
-            <div className="container-spa">
-              <div
-                className={`flex flex-col gap-10 lg:flex-row lg:items-start lg:gap-16 ${
-                  reversed ? "lg:flex-row-reverse" : ""
-                }`}
-              >
-                <Reveal className="lg:sticky lg:top-28 lg:w-[38%] lg:shrink-0">
-                  <div className="relative aspect-4/3 w-full overflow-hidden rounded-[1.75rem] shadow-soft lg:aspect-3/4">
-                    <Image
-                      src={category.image}
-                      alt={category.title}
-                      fill
-                      sizes="(min-width: 1024px) 35vw, 90vw"
-                      className="object-cover"
-                    />
-                  </div>
-                  <h2 className="mt-6 text-[1.9rem] leading-tight sm:text-[2.2rem]">
-                    {category.title}
-                  </h2>
-                  <p className="mt-3 leading-relaxed text-ink-soft">{category.description}</p>
-                  <a
-                    href={buildWhatsAppLink(
-                      `Hi ${BUSINESS.name}, I'd like to book a treatment from your "${category.title}" menu.`
-                    )}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn btn-primary mt-6"
-                  >
-                    <WhatsAppIcon className="h-4 w-4" />
-                    Book This Category
-                  </a>
-                </Reveal>
-
-                <Reveal delay={2} className="flex-1">
-                  <ul className="columns-1 gap-x-12 sm:columns-2">
-                    {category.items.map((item, i) => (
-                      <li
-                        key={`${item.name}-${i}`}
-                        className="flex break-inside-avoid items-end justify-between gap-3 border-b border-dashed border-brand-200/70 py-3 text-[0.98rem]"
-                      >
-                        <span className="text-ink">
-                          {item.name}
-                          {item.duration && (
-                            <span className="ml-1.5 inline-flex items-center gap-1 text-xs text-ink-soft">
-                              <ClockIcon className="h-3 w-3" />
-                              {item.duration}
-                            </span>
-                          )}
-                          {item.note && (
-                            <span className="block text-xs italic text-ink-soft/80">
-                              {item.note}
-                            </span>
-                          )}
-                        </span>
-                        <span className="whitespace-nowrap font-medium text-brand-700">
-                          {item.price}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </Reveal>
-              </div>
-            </div>
-          </section>
-        );
-      })}
+      <section className="section-pad">
+        <div className="container-spa max-w-4xl">
+          <ServicesAccordion />
+        </div>
+      </section>
 
       {/* CTA */}
       <section className="section-pad pt-4!">

@@ -1,7 +1,15 @@
 import Link from "next/link";
 import Image from "next/image";
 import { BUSINESS, NAV_LINKS, buildWhatsAppLink } from "@/lib/constants";
-import { WhatsAppIcon, InstagramIcon, MailIcon, PhoneIcon, PinIcon, ClockIcon } from "./icons";
+import {
+  WhatsAppIcon,
+  InstagramIcon,
+  FacebookIcon,
+  MailIcon,
+  PhoneIcon,
+  PinIcon,
+  ClockIcon,
+} from "./icons";
 
 export default function Footer() {
   return (
@@ -9,22 +17,22 @@ export default function Footer() {
       <div className="container-spa section-pad py-14!">
         <div className="grid gap-12 md:grid-cols-[1.3fr_1fr_1fr]">
           <div>
-            <div className="flex items-center gap-3">
-              <Image
-                src="/logo.png"
-                alt=""
-                width={40}
-                height={40}
-                className="h-10 w-10 object-contain brightness-0 invert opacity-90"
-              />
-              <span className="script-text text-3xl text-blush">Whispering Waters</span>
-            </div>
+            <Image
+              src="/logo.png"
+              alt="Whispering Waters Spa"
+              width={200}
+              height={160}
+              className="h-18 w-auto object-contain brightness-0 invert opacity-90"
+            />
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-cream/65">
-              {BUSINESS.subTagline} A quiet retreat in the heart of Abu Dhabi, blending
-              Ayurvedic ritual, Arabian hospitality and modern wellness under one roof.
+              {BUSINESS.subTagline} A quiet retreat in the heart of Abu Dhabi,
+              blending Ayurvedic ritual, Arabian hospitality and modern wellness
+              under one roof.
             </p>
             <a
-              href={buildWhatsAppLink(`Hi ${BUSINESS.name}, I'd like to book an appointment.`)}
+              href={buildWhatsAppLink(
+                `Hi ${BUSINESS.name}, I'd like to book an appointment.`,
+              )}
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-primary mt-6"
@@ -39,7 +47,10 @@ export default function Footer() {
             <ul className="mt-4 space-y-2.5 text-sm">
               {NAV_LINKS.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="text-cream/70 transition-colors hover:text-cream">
+                  <Link
+                    href={link.href}
+                    className="text-cream/70 transition-colors hover:text-cream"
+                  >
                     {link.label}
                   </Link>
                 </li>
@@ -76,15 +87,26 @@ export default function Footer() {
           <p className="text-xs text-cream/45">
             © {new Date().getFullYear()} {BUSINESS.name}. All rights reserved.
           </p>
-          <a
-            href={BUSINESS.instagram}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Instagram"
-            className="w-fit text-cream/55 transition-colors hover:text-cream"
-          >
-            <InstagramIcon className="h-5 w-5" />
-          </a>
+          <div className="flex items-center gap-4">
+            <a
+              href={BUSINESS.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              className="text-cream/55 transition-colors hover:text-cream"
+            >
+              <InstagramIcon className="h-5 w-5" />
+            </a>
+            <a
+              href={BUSINESS.facebook}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook"
+              className="text-cream/55 transition-colors hover:text-cream"
+            >
+              <FacebookIcon className="h-5 w-5" />
+            </a>
+          </div>
         </div>
       </div>
     </footer>

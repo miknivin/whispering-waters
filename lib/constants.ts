@@ -8,7 +8,8 @@ export const BUSINESS = {
   whatsappNumber: "971559375537",
   phoneDisplay: "+971 55 937 5537",
   email: "hello@whisperingwaters.ae",
-  instagram: "https://instagram.com/whisperingwatersspa",
+  instagram: "https://www.instagram.com/whispringwatersspa?igsh=MXU5MXlnNHBmNnNpag==",
+  facebook: "https://www.facebook.com/profile.php?id=61590682196863",
 } as const;
 
 export function buildWhatsAppLink(message?: string) {

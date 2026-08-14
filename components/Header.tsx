@@ -43,28 +43,35 @@ export default function Header() {
           : "border-transparent bg-cream/80 backdrop-blur-sm"
       }`}
     >
-      <div className="container-spa flex items-center justify-between py-3">
-        <Link href="/" className="flex shrink-0 flex-col items-center leading-none">
+      <div className="container-spa flex items-center justify-between py-2">
+        <Link
+          href="/"
+          className="flex shrink-0 flex-col items-center leading-none"
+        >
           <Image
             src="/logo.png"
             alt="Whispering Waters Spa"
-            width={200}
-            height={160}
-            className="h-11 w-auto object-contain sm:h-12"
+            width={240}
+            height={180}
+            className="h-11 w-auto object-contain sm:h-18"
             priority
           />
-          <span className="eyebrow -mt-1 text-[10px]">Spa</span>
         </Link>
 
         <nav className="hidden items-center gap-9 md:flex">
           {NAV_LINKS.map((link) => {
-            const active = link.href === "/" ? pathname === "/" : pathname.startsWith(link.href);
+            const active =
+              link.href === "/"
+                ? pathname === "/"
+                : pathname.startsWith(link.href);
             return (
               <Link
                 key={link.href}
                 href={link.href}
                 className={`group relative py-1 text-[0.95rem] tracking-wide transition-colors ${
-                  active ? "text-brand-700" : "text-ink-soft hover:text-brand-700"
+                  active
+                    ? "text-brand-700"
+                    : "text-ink-soft hover:text-brand-700"
                 }`}
               >
                 {link.label}
@@ -80,7 +87,9 @@ export default function Header() {
 
         <div className="hidden md:block">
           <a
-            href={buildWhatsAppLink(`Hi ${BUSINESS.name}, I'd like to book an appointment.`)}
+            href={buildWhatsAppLink(
+              `Hi ${BUSINESS.name}, I'd like to book an appointment.`,
+            )}
             target="_blank"
             rel="noopener noreferrer"
             className="btn btn-primary"
@@ -97,7 +106,11 @@ export default function Header() {
           onClick={() => setOpen((v) => !v)}
           className="p-2 text-brand-700 md:hidden"
         >
-          {open ? <XIcon className="h-6 w-6" /> : <MenuIcon className="h-6 w-6" />}
+          {open ? (
+            <XIcon className="h-6 w-6" />
+          ) : (
+            <MenuIcon className="h-6 w-6" />
+          )}
         </button>
       </div>
 
@@ -105,7 +118,10 @@ export default function Header() {
         <div className="border-t border-brand-200/60 bg-cream md:hidden">
           <nav className="container-spa flex flex-col gap-1 py-4">
             {NAV_LINKS.map((link) => {
-              const active = link.href === "/" ? pathname === "/" : pathname.startsWith(link.href);
+              const active =
+                link.href === "/"
+                  ? pathname === "/"
+                  : pathname.startsWith(link.href);
               return (
                 <Link
                   key={link.href}
@@ -117,7 +133,9 @@ export default function Header() {
               );
             })}
             <a
-              href={buildWhatsAppLink(`Hi ${BUSINESS.name}, I'd like to book an appointment.`)}
+              href={buildWhatsAppLink(
+                `Hi ${BUSINESS.name}, I'd like to book an appointment.`,
+              )}
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-primary mt-3 justify-center"
