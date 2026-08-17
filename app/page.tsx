@@ -54,6 +54,16 @@ const GALLERY = [
   { src: "/imgs/reception-02.jpg", alt: "Whispering Waters Spa reception" },
 ];
 
+const THERAPISTS = [
+  "/therapist/therapist-1.jpg",
+  "/therapist/therapist-2.jpg",
+  "/therapist/therapist-3.jpg",
+  "/therapist/therapist-4.jpg",
+  "/therapist/therapist-5.jpg",
+  "/therapist/therapist-6.jpg",
+  "/therapist/therapist-7.jpg",
+];
+
 export default function Home() {
   return (
     <>
@@ -207,6 +217,35 @@ export default function Home() {
               <ArrowRightIcon className="h-4 w-4" />
             </Link>
           </Reveal>
+        </div>
+      </section>
+
+      {/* OUR THERAPISTS */}
+      <section className="section-pad">
+        <div className="container-spa">
+          <Reveal>
+            <SectionHeading
+              eyebrow="Our Team"
+              title="Meet Our Therapists"
+              subtitle="Every treatment at Whispering Waters is performed by a trained, licensed therapist who takes the same care with every guest."
+            />
+          </Reveal>
+
+          <div className="mt-14 grid grid-cols-2 gap-4 sm:grid-cols-3 md:gap-5 lg:grid-cols-4">
+            {THERAPISTS.map((src, i) => (
+              <Reveal key={src} delay={((i % 4) + 1) as 1 | 2 | 3 | 4}>
+                <div className="relative aspect-4/5 w-full overflow-hidden rounded-2xl">
+                  <Image
+                    src={src}
+                    alt="Whispering Waters Spa therapist"
+                    fill
+                    sizes="(min-width: 1024px) 22vw, (min-width: 640px) 30vw, 45vw"
+                    className="object-cover object-top transition-transform duration-700 hover:scale-105"
+                  />
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 

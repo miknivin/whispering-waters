@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Jost, Mrs_Saint_Delafield } from "next/font/google";
+import { Cormorant_Garamond, Jost, Alex_Brush } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -19,7 +19,7 @@ const jost = Jost({
   weight: ["300", "400", "500", "600"],
 });
 
-const script = Mrs_Saint_Delafield({
+const script = Alex_Brush({
   variable: "--font-script",
   subsets: ["latin"],
   weight: "400",

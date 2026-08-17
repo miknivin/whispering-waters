@@ -27,13 +27,16 @@ export default function ServicesPage() {
         <div className="absolute inset-0 bg-linear-to-t from-brand-900/50 via-brand-900/28 to-brand-900/6" />
         <div className="container-spa relative pb-14 pt-32">
           <Reveal>
-            <span className="eyebrow text-shadow-hero text-gold-soft">Menu &amp; Pricing</span>
+            <span className="eyebrow text-shadow-hero text-gold-soft">
+              Menu &amp; Pricing
+            </span>
             <h1 className="text-shadow-hero mt-3 max-w-2xl text-balance text-[2.4rem] leading-[1.15] text-cream sm:text-[3rem]">
               Treatments &amp; Price List
             </h1>
             <p className="text-shadow-hero mt-4 max-w-lg text-balance leading-relaxed text-cream/90">
-              All prices in AED. Tap a category to see the full menu, or message us on WhatsApp
-              with the treatment you&rsquo;d like and we&rsquo;ll confirm the next available slot.
+              All prices in AED. Tap a category to see the full menu, or message
+              us on WhatsApp with the treatment you&rsquo;d like and we&rsquo;ll
+              confirm the next available slot.
             </p>
           </Reveal>
         </div>
@@ -41,7 +44,7 @@ export default function ServicesPage() {
 
       {/* CATEGORIES */}
       <section className="section-pad">
-        <div className="container-spa max-w-4xl">
+        <div className="container-spa max-w-6xl">
           <ServicesAccordion />
         </div>
       </section>
@@ -55,13 +58,13 @@ export default function ServicesPage() {
                 Not sure what to choose?
               </h2>
               <p className="mx-auto mt-4 max-w-md text-balance leading-relaxed text-ink-soft">
-                Tell us how you&rsquo;re feeling and we&rsquo;ll recommend the right ritual for
-                you.
+                Tell us how you&rsquo;re feeling and we&rsquo;ll recommend the
+                right ritual for you.
               </p>
               <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
                 <a
                   href={buildWhatsAppLink(
-                    `Hi ${BUSINESS.name}, I'm not sure which treatment to choose. Could you help me pick one?`
+                    `Hi ${BUSINESS.name}, I'm not sure which treatment to choose. Could you help me pick one?`,
                   )}
                   target="_blank"
                   rel="noopener noreferrer"

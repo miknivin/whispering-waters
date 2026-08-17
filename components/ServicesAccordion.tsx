@@ -60,11 +60,11 @@ export default function ServicesAccordion() {
                   <div className="border-t border-brand-200/60 px-5 pb-6 pt-5 sm:px-6 sm:pb-8">
                     <p className="leading-relaxed text-ink-soft">{category.description}</p>
 
-                    <ul className="mt-6 columns-1 gap-x-12 sm:columns-2">
+                    <ul className="mt-6 grid grid-cols-1 gap-x-12 sm:grid-cols-2">
                       {category.items.map((item, idx) => (
                         <li
                           key={`${item.name}-${idx}`}
-                          className="flex break-inside-avoid items-end justify-between gap-3 border-b border-dashed border-brand-200/70 py-3 text-[0.98rem]"
+                          className="flex items-end justify-between gap-3 border-b border-dashed border-brand-200/70 py-3 text-[0.98rem]"
                         >
                           <span className="text-ink">
                             {item.name}
