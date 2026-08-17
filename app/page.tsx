@@ -70,7 +70,7 @@ export default function Home() {
       {/* HERO */}
       <section className="relative flex min-h-[92vh] flex-col justify-end overflow-hidden bg-brand-900 sm:min-h-[88vh]">
         <Image
-          src="/imgs/couple-suite-02.jpg"
+          src="/imgs/main-banner.webp"
           alt="A candlelit couple's suite at Whispering Waters Spa with jacuzzi and rose petals"
           fill
           priority
@@ -283,7 +283,7 @@ export default function Home() {
             <div className="relative">
               <div className="relative aspect-4/5 w-full overflow-hidden rounded-4xl shadow-soft">
                 <Image
-                  src="/imgs/spa-candles.webp"
+                  src="/imgs/spa-candles.jpg"
                   alt="Candles, salts and a rolled towel styled for a spa ritual"
                   fill
                   sizes="(min-width: 1024px) 40vw, 90vw"

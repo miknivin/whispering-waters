@@ -35,8 +35,16 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     image: "/imgs/kizhi-massage-01.jpg",
     items: [
       { name: "Ayurvedic Massage", duration: "60 minutes", price: "250 AED" },
-      { name: "Ayurvedic Massage with Kizhi", duration: "90 minutes", price: "299 AED" },
-      { name: "Ayurvedic Massage with Steam", duration: "90 minutes", price: "359 AED" },
+      {
+        name: "Ayurvedic Massage with Kizhi",
+        duration: "90 minutes",
+        price: "299 AED",
+      },
+      {
+        name: "Ayurvedic Massage with Steam",
+        duration: "90 minutes",
+        price: "359 AED",
+      },
       {
         name: "Cupping Therapy",
         duration: "60 minutes · 6 cups",
@@ -61,7 +69,11 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
       { name: "Couple Massage", price: "399 AED" },
       { name: "4 Hands Massage", price: "399 AED" },
       { name: "Foot Massage", duration: "30 minutes", price: "150 AED" },
-      { name: "Head & Shoulder Massage", duration: "30 minutes", price: "150 AED" },
+      {
+        name: "Head & Shoulder Massage",
+        duration: "30 minutes",
+        price: "150 AED",
+      },
       { name: "Herbal Head Massage", price: "150 AED" },
       { name: "Shaving", note: "private part only", price: "180 AED" },
       { name: "Waxing", note: "private part only", price: "199 AED" },
@@ -95,13 +107,15 @@ export const SIGNATURE_HIGHLIGHTS = [
     title: "Ayurvedic Kizhi Ritual",
     price: "From 250 AED",
     image: "/imgs/kizhi-massage-02.jpg",
-    blurb: "Warm herbal pouches, pressed rhythmically to melt away deep-seated tension.",
+    blurb:
+      "Warm herbal pouches, pressed rhythmically to melt away deep-seated tension.",
   },
   {
     title: "Hot Stone Massage",
     price: "250 AED",
     image: "/imgs/hot-stone-back.jpg",
-    blurb: "Heated basalt stones glide over oiled skin, easing muscle by muscle into calm.",
+    blurb:
+      "Heated basalt stones glide over oiled skin, easing muscle by muscle into calm.",
   },
   {
     title: "Moroccan Bath & Jacuzzi",
@@ -112,7 +126,8 @@ export const SIGNATURE_HIGHLIGHTS = [
   {
     title: "Golden Facial Treatment",
     price: "250 AED",
-    image: "/imgs/candle-ritual.jpg",
-    blurb: "A radiance ritual that leaves skin luminous and the senses unwound.",
+    image: "/imgs/golden-facial.jpg",
+    blurb:
+      "A radiance ritual that leaves skin luminous and the senses unwound.",
   },
 ] as const;
