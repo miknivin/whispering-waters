@@ -70,12 +70,20 @@ export default function Home() {
       {/* HERO */}
       <section className="relative flex min-h-[92vh] flex-col justify-end overflow-hidden bg-brand-900 sm:min-h-[88vh]">
         <Image
+          src="/imgs/main-banner-mobile.webp"
+          alt="A candlelit couple's suite at Whispering Waters Spa with jacuzzi and rose petals"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-[75%_center] opacity-90 sm:hidden"
+        />
+        <Image
           src="/imgs/main-banner.webp"
           alt="A candlelit couple's suite at Whispering Waters Spa with jacuzzi and rose petals"
           fill
           priority
           sizes="100vw"
-          className="object-cover opacity-90"
+          className="hidden object-cover opacity-90 sm:block"
         />
         <div className="absolute inset-0 bg-linear-to-t from-brand-900/50 via-brand-900/28 to-brand-900/5" />
         <div className="absolute inset-0 bg-linear-to-r from-brand-900/40 via-brand-900/10 to-transparent" />
@@ -234,15 +242,20 @@ export default function Home() {
           <div className="mt-14 grid grid-cols-2 gap-4 sm:grid-cols-3 md:gap-5 lg:grid-cols-4">
             {THERAPISTS.map((src, i) => (
               <Reveal key={src} delay={((i % 4) + 1) as 1 | 2 | 3 | 4}>
-                <div className="relative aspect-4/5 w-full overflow-hidden rounded-2xl">
+                <a
+                  href={buildWhatsAppLink(`Hi ${BUSINESS.name}, I'd like to book an appointment.`)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative block aspect-4/5 w-full overflow-hidden rounded-2xl"
+                >
                   <Image
                     src={src}
                     alt="Whispering Waters Spa therapist"
                     fill
                     sizes="(min-width: 1024px) 22vw, (min-width: 640px) 30vw, 45vw"
-                    className="object-cover object-top transition-transform duration-700 hover:scale-105"
+                    className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
                   />
-                </div>
+                </a>
               </Reveal>
             ))}
           </div>
